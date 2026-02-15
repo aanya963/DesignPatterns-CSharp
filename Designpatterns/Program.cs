@@ -1,8 +1,12 @@
 ﻿using DesignPatterns.Behavioral.Strategy;
 using DesignPatterns.Creational.Factory;
-using DesignPatterns.Creational.Singleton;
+using Designpatterns.Creational.Singleton;
+using System.Runtime.InteropServices;
+using DesignPatterns.Behavioral.Observer;
 class Program
 {
+    public static object SingletonDemo { get; private set; }
+
     static void Main(string[] args)
     {
         if (args.Length == 0)
@@ -13,14 +17,26 @@ class Program
 
         switch (args[0].ToLower())
         {
-            case "singleton":
-                SingletonDemo.Run();
+            case "basicsingleton":
+                BasicSingletonDemo.Run();
+                break;
+            case "eagersingleton":
+                EagerSingletonDemo.Run();
+                break;
+            case "lazysingleton":
+                LazySingletonDemo.Run();
+                break;  
+            case "threadsafesingleton":
+                ThreadSafeSingletonDemo.Run();
                 break;
             case "strategy":
                 StrategyDemo.Run();
                 break;
             case "factory":
                 FactoryDemo.Run();
+                break;
+            case "observer":
+                ObserverDemo.Run();
                 break;
             
             default:
