@@ -6,7 +6,7 @@ using DesignPatterns.Behavioral.Observer;
 using DesignPatterns.Structural;
 class Program
 {
-    public static object SingletonDemo { get; private set; }
+    // public static object SingletonDemo { get; private set; }
 
     static void Main(string[] args)
     {
@@ -41,6 +41,9 @@ class Program
                 break;
             case "decorator":
                 DecoratorDemo.Run();
+                break;
+            case "adapter":
+                AdapterDemo.Run();
                 break;
             default:
                 Console.WriteLine("Pattern not found.");
