@@ -3,6 +3,7 @@ using DesignPatterns.Creational.Factory;
 using Designpatterns.Creational.Singleton;
 using System.Runtime.InteropServices;
 using DesignPatterns.Behavioral.Observer;
+using DesignPatterns.Structural;
 class Program
 {
     public static object SingletonDemo { get; private set; }
@@ -38,7 +39,9 @@ class Program
             case "observer":
                 ObserverDemo.Run();
                 break;
-            
+            case "decorator":
+                DecoratorDemo.Run();
+                break;
             default:
                 Console.WriteLine("Pattern not found.");
                 break;
