@@ -1,0 +1,55 @@
+1️⃣ Why Builder Exists 
+The Real Problems:
+❌ Problem 1: Telescoping Constructor   
+
+// public class House
+// {
+//     public House(string foundation) { }
+//     public House(string foundation, string walls) { }
+//     public House(string foundation, string walls, string roof) { }
+//     public House(string foundation, string walls, string roof, string garage) { }
+// } 
+
+Now imagine 10 optional parameters.
+You end up with:
+- 2^n constructors
+- Ugly constructor calls
+- Hard to read code
+- Error-prone
+
+
+❌ Problem 2: Complex Object Construction
+- Sometimes object creation:
+- Must follow specific steps
+- Must enforce order
+- Has optional parts
+- Has different representations
+
+DEFINITION:
+Builder pattern separates the construction of a complex object from its representation 
+so that the same construction process can create different representations.
+
+
+
+9️⃣ When To Use Builder
+
+Use Builder when:
+
+✔ Object has many optional parameters
+✔ Object construction is complex
+✔ Want readable object creation
+✔ Need immutable objects
+✔ Need different representations
+
+🧩 UML Structure
+
+        Director
+           |
+           v
+      Builder Interface
+           ^
+           |
+    Concrete Builder
+           |
+           v
+         Product

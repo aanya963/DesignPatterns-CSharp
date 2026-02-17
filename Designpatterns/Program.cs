@@ -5,6 +5,9 @@ using System.Runtime.InteropServices;
 using DesignPatterns.Behavioral.Observer;
 using DesignPatterns.Structural;
 using Designpatterns.Structural.Facade;
+using DesignPatterns.Creational.Builder;
+using DesignPatterns.Creational.FluentBuilder;
+using DesignPatterns.Creational.StepBuilder;
 class Program
 {
     // public static object SingletonDemo { get; private set; }
@@ -48,6 +51,15 @@ class Program
                 break;
             case "facade":
                 FacadeDemo.Run();
+                break;
+            case "classicbuilder":
+                ClassicBuilderDemo.Run();
+                break;
+            case "fluentbuilder":
+                FluentBuilderDemo.Run();
+                break;
+            case "stepbuilder":
+                StepBuilderDemo.Run();
                 break;
             default:
                 Console.WriteLine("Pattern not found.");
