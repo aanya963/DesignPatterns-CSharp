@@ -1,0 +1,108 @@
+"Singleton ensures a class has only one instance and provides a global access point to it, 
+typically implemented using private constructor, static instance, and static access method."
+
+
+1️⃣ What is Singleton?
+    Singleton ensures:
+       - Only one instance of a class exists
+       - A global access point is provided to access that instance
+2️⃣ Core Rules in C#
+    A proper Singleton must have:
+    private constructor
+    static instance field
+    public static access method/property
+
+3️⃣ Why Constructor Must Be Private?
+If constructor is public:
+    new Singleton(); ❌
+    Anyone can create multiple objects.
+Private constructor ensures:
+    Object can only be created inside the class
+4️⃣ Why Instance Must Be Static?
+Because Singleton belongs to the class, not to an object.
+Static:
+    Shared across application
+    Only one copy exists
+
+5️⃣ Types of Singleton in C#
+🔹 1. Basic Singleton (Lazy – NOT Thread Safe)
+    ✔ Lazy initialization
+    ❌ Not thread-safe
+    ✔ Easy to understand
+Use only for learning.
+
+🔹 2. Eager Initialization Singleton
+    ✔ Thread-safe by default (CLR guarantees static initialization safety)
+    ✔ Very simple
+    ❌ Instance created even if not used
+Good when:
+    Object is lightweight
+    Always needed
+
+🔹 3. Thread-Safe Singleton (Using lock)
+    ✔ Lazy
+    ✔ Thread-safe
+    ❌ Locking on every call (performance overhead)
+Used before Lazy<T> became popular.
+
+🔹 4. Lazy<T> Singleton (Best Practice in Modern C#)
+    ✔ Lazy
+    ✔ Thread-safe
+    ✔ No manual locking
+    ✔ Clean and recommended
+This is the most elegant solution in C#.
+
+6️⃣ Which One Should I Use?
+If object is lightweight: → Use Eager Singleton
+
+If object is heavy or may not always be used: → Use Lazy<T> Singleton
+
+Avoid: → Basic Singleton in multithreaded applications
+
+7️⃣ C# Specific Advantages
+✔ CLR Handles Static Initialization
+In C#:
+    Static fields are initialized only once
+    Thread-safe by default
+    No race condition during class loading
+    This makes Eager Singleton safe.
+
+✔ Built-in Lazy<T>
+C# provides: Lazy<T>
+Which:
+    Handles thread-safety
+    Handles lazy initialization
+    Avoids manual locking
+    This is not as cleanly available in C++.
+
+✔ lock Keyword
+C# provides simple synchronization:
+    lock(object)
+    Internally uses Monitor class.
+    Much simpler compared to manual mutex handling in C++.
+
+8️⃣ Why Use sealed in C#?
+    public sealed class Singleton
+    Prevents inheritance.
+    If not sealed:
+    A derived class could create another instance
+    Singleton guarantee may break
+    Best practice in C#:
+    Always mark Singleton as sealed.
+9️⃣ Real-World Use Cases
+    Logger
+    Configuration Manager
+    Cache Manager
+    Database Connection Manager
+    Application-wide settings
+🔟 Problems With Singleton
+    ❌ Hard to unit test
+    ❌ Global state can increase coupling
+    ❌ Can hide dependencies
+Use carefully in large systems.
+
+Preferred Order:
+🥇 Lazy<T>
+🥈 Eager Initialization
+🥉 Lock-based Thread Safe
+❌ Basic (only for learning)
